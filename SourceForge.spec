@@ -61,7 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc docs/*
 %doc *.gz
 /etc/SourceForge
-%dir %attr(755,http,http) /home/httpd/SourceForge/cache
+%dir %attr(775,root,http) /home/httpd/SourceForge/cache
 %attr(755,root,root) /home/httpd/SourceForge/backend/*.pl
 %attr(755,root,root) /home/httpd/SourceForge/backend/shell/*.sh
 /home/httpd/SourceForge/backend/zones/*.zone
