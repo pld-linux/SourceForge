@@ -15,7 +15,8 @@ $ mysql -p -u sourceforge sourceforge < /home/httpd/SourceForge/db/SourceForge.s
 4. Set up DocumentRoot (for main server, or virtual host), in httpd.conf
 (or mod_vhost_alias.conf). DocumentRoot should point to
 /home/httpd/SourceForge/www. Remember about setting both unsecure and secure
-connections.
+connections. You can find an example sourceforge.conf file in
+documentation directory.
 
 5. Edit php.ini and add /home/httpd/SourceForge/www/include to
 include_path variable

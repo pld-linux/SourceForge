@@ -10,18 +10,6 @@ diff -Naur SF2.0/backend/include.pl SF2.0-p/backend/include.pl
  $config{'lock_file'}		= '/tmp/sf-backend';		# lockfile location
  $config{'log_file'}		= '/home/dummy/backend.log';	# logfile location
  $config{'group_dir_prefix'} 	= '/home/groups';		# prefix for group directories
-diff -Naur SF2.0/db/SourceForge.sql SF2.0-p/db/SourceForge.sql
---- SF2.0/db/SourceForge.sql	Thu Sep  7 23:39:37 2000
-+++ SF2.0-p/db/SourceForge.sql	Tue Sep 19 20:49:25 2000
-@@ -526,7 +526,7 @@
- 
- CREATE TABLE frs_file (
-   file_id int(11) NOT NULL auto_increment,
--  filename text,
-+  filename char(255) NOT NULL,
-   release_id int(11) DEFAULT '0' NOT NULL,
-   type_id int(11) DEFAULT '0' NOT NULL,
-   processor_id int(11) DEFAULT '0' NOT NULL,
 diff -Naur SF2.0/docs/Install_Guide.html SF2.0-p/docs/Install_Guide.html
 --- SF2.0/docs/Install_Guide.html	Thu Sep  7 23:37:52 2000
 +++ SF2.0-p/docs/Install_Guide.html	Tue Sep 19 20:55:26 2000
