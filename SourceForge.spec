@@ -1,12 +1,10 @@
-Summary:	
-Summary(pl):	
+Summary:	Breaking Down the Barriers to Open Source Development
 Name:		SourceForge
-Version:	1.1.0
+Version:	2.0
 Release:	1
 License:	GPL
-Group:		
-Group(pl):	
-Source:		%{name}-%{version}.tar.gz
+Group:		Development/Version Control
+Source:		http://download.sourceforge.net/alexandria/SF2_0.tar.gz
 Requires:	php
 Requires:	mysql
 Requires:	apache-mod_ssl
@@ -17,7 +15,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description -l pl
 
 %prep
-%setup -q
+%setup -q -n SF%{version}
 
 %build
 
