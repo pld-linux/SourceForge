@@ -48,16 +48,13 @@ install etc/local.inc $RPM_BUILD_ROOT%{_sysconfdir}/SourceForge
 install %{SOURCE1} README.PLD
 install %{SOURCE2} apache-mod_vhost_alias.conf
 
-gzip -9nf AUTHORS ChangeLog README README.PLD \
-	apache-mod_vhost_alias.conf
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %doc docs/*
-%doc *.gz
+%doc AUTHORS ChangeLog README README.PLD apache-mod_vhost_alias.conf
 %{_sysconfdir}/SourceForge
 %dir %attr(775,root,http) /home/httpd/SourceForge/cache
 %attr(755,root,root) /home/httpd/SourceForge/backend/*.pl
