@@ -2,7 +2,7 @@ Summary:	Breaking Down the Barriers to Open Source Development
 Summary(pl):	Prze³amywanie barier tworzenia Wolnego Oprogramowania
 Name:		SourceForge
 Version:	2.0_cvs_20001116
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Version Control
 Source0:	SF%{version}.tar.gz
