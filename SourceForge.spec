@@ -1,4 +1,5 @@
 Summary:	Breaking Down the Barriers to Open Source Development
+Summary(pl):	Prze³amywanie barier tworzenia Wolnego Oprogramowania
 Name:		SourceForge
 Version:	2.0_cvs_20001116
 Release:	1
@@ -11,7 +12,7 @@ Source1:	%{name}-README.PLD
 Source2:	%{name}-mod_vhost_alias.conf
 Source3:	%{name}.sql
 Patch0:		%{name}-PLD.patch
-Patch3:		%{name}-config.patch
+Patch1:		%{name}-config.patch
 Requires:	php >= 3.0
 Requires:	php-mysql
 Requires:	mysql-client
@@ -35,9 +36,7 @@ opartej na WWW.
 %prep
 %setup -q -n SF%{version}
 %patch0 -p1
-%patch3 -p1
-
-%build
+%patch1 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
