@@ -7,6 +7,7 @@ License:	GPL
 Group:		
 Group(pl):	
 Source:		%{name}-%{version}.tar.gz
+Requires:	php
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
