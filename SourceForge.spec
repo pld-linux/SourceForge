@@ -1,14 +1,18 @@
 Summary:	Breaking Down the Barriers to Open Source Development
 Name:		SourceForge
 Version:	2.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Version Control
 Group(de):	Entwicklung/Versionkontrolle
 Group(pl):	Programowanie/Zarz±dzanie wersjami
 Source0:	http://download.sourceforge.net/alexandria/SF2_0.tar.gz
-Source1:	SourceForge-README.PLD
+Source1:	%{name}-README.PLD
+Source2:	%{name}-mod_vhost_alias.conf
 Patch0:		%{name}-PLD.patch
+Patch1:		%{name}-cache.patch
+Patch2:		%{name}-mysql.patch
+Patch3:		%{name}-config.patch
 Requires:	php >= 3.0
 Requires:	php-mysql
 Requires:	mysql-client
@@ -31,20 +35,25 @@ stron± WWW, archiwizacji plików i ogólnej administracji opartej na WWW.
 %prep
 %setup -q -n SF%{version}
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/home/httpd/SourceForge
+install -d $RPM_BUILD_ROOT/home/httpd/SourceForge/cache
 install -d $RPM_BUILD_ROOT/etc/SourceForge
 
 cp -af * $RPM_BUILD_ROOT/home/httpd/SourceForge
 install etc/local.inc $RPM_BUILD_ROOT/etc/SourceForge
 
 install %{SOURCE1} README.PLD
+install %{SOURCE2} apache-mod_vhost_alias.conf
 
-gzip -9nf AUTHORS CONTRIBUTING ChangeLog README README.PLD
+gzip -9nf AUTHORS CONTRIBUTING ChangeLog README README.PLD \
+	apache-mod_vhost_alias.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -54,6 +63,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc docs/*
 %doc *.gz
 /etc/SourceForge
+%dir %attr(755,http,http) /home/httpd/SourceForge/cache
 %attr(755,root,root) /home/httpd/SourceForge/backend/*.pl
 %attr(755,root,root) /home/httpd/SourceForge/backend/shell/*.sh
 /home/httpd/SourceForge/backend/zones/*.zone
