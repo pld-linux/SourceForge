@@ -1,22 +1,21 @@
 Summary:	Breaking Down the Barriers to Open Source Development
 Name:		SourceForge
-Version:	2.0
-Release:	2
+Version:	2.0_cvs_20001116
+Release:	1
 License:	GPL
 Group:		Development/Version Control
 Group(de):	Entwicklung/Versionkontrolle
 Group(pl):	Programowanie/Zarz±dzanie wersjami
-Source0:	http://download.sourceforge.net/alexandria/SF2_0.tar.gz
+Source0:	SF2.0_cvs_20001116.tar.gz
 Source1:	%{name}-README.PLD
 Source2:	%{name}-mod_vhost_alias.conf
+Source3:	%{name}.sql
 Patch0:		%{name}-PLD.patch
-Patch1:		%{name}-cache.patch
-Patch2:		%{name}-mysql.patch
 Patch3:		%{name}-config.patch
 Requires:	php >= 3.0
 Requires:	php-mysql
 Requires:	mysql-client
-Requires:	mysql
+Requires:	mysql >= 3.23
 Requires:	apache-mod_ssl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,8 +34,6 @@ stron± WWW, archiwizacji plików i ogólnej administracji opartej na WWW.
 %prep
 %setup -q -n SF%{version}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 %patch3 -p1
 
 %build
@@ -47,12 +44,13 @@ install -d $RPM_BUILD_ROOT/home/httpd/SourceForge/cache
 install -d $RPM_BUILD_ROOT/etc/SourceForge
 
 cp -af * $RPM_BUILD_ROOT/home/httpd/SourceForge
+cp -f %{SOURCE3} $RPM_BUILD_ROOT/home/httpd/SourceForge/db/SourceForge.sql
 install etc/local.inc $RPM_BUILD_ROOT/etc/SourceForge
 
 install %{SOURCE1} README.PLD
 install %{SOURCE2} apache-mod_vhost_alias.conf
 
-gzip -9nf AUTHORS CONTRIBUTING ChangeLog README README.PLD \
+gzip -9nf AUTHORS ChangeLog README README.PLD \
 	apache-mod_vhost_alias.conf
 
 %clean
