@@ -2,7 +2,7 @@ Summary:	Breaking Down the Barriers to Open Source Development
 Summary(pl):	Prze³amywanie barier tworzenia Wolnego Oprogramowania
 Name:		SourceForge
 Version:	2.0_cvs_20001116
-Release:	3
+Release:	4
 License:	GPL
 Group:		Development/Version Control
 Source0:	SF%{version}.tar.gz
@@ -37,12 +37,22 @@ opartej na WWW.
 %patch0 -p1
 %patch1 -p1
 
+find . -type d -name CVS | xargs rm -rf
+
+# precompiled x86 binary
+rm -f utils/tmpfilemove
+
+%build
+cd utils
+%{__cc} %{rpmldflags} %{rpmcflags} -o tmpfilemove tmpfilemove.c
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/home/httpd/SourceForge/cache
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/SourceForge
 
 cp -af * $RPM_BUILD_ROOT/home/httpd/SourceForge
+rm -f $RPM_BUILD_ROOT/home/httpd/SourceForge/utils/*.c
 cp -f %{SOURCE3} $RPM_BUILD_ROOT/home/httpd/SourceForge/db/SourceForge.sql
 install etc/local.inc $RPM_BUILD_ROOT%{_sysconfdir}/SourceForge
 
@@ -64,7 +74,6 @@ rm -rf $RPM_BUILD_ROOT
 /home/httpd/SourceForge/db
 %attr(755,root,root) /home/httpd/SourceForge/monitor
 %attr(755,root,root) /home/httpd/SourceForge/utils/*.pl
-/home/httpd/SourceForge/utils/*.c
 /home/httpd/SourceForge/utils/*.php
 /home/httpd/SourceForge/utils/*.txt
 %attr(755,root,root) /home/httpd/SourceForge/utils/*/*.pl
