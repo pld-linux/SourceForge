@@ -1,0 +1,97 @@
+diff -Naur SF2.0/backend/include.pl SF2.0-p/backend/include.pl
+--- SF2.0/backend/include.pl	Thu Sep  7 23:37:53 2000
++++ SF2.0-p/backend/include.pl	Tue Sep 19 20:56:39 2000
+@@ -10,7 +10,7 @@
+ ########################
+ # global configuration #
+ ########################
+-$config{'database_include'} 	= '/etc/local.inc';		# database include file
++$config{'database_include'} 	= '/etc/SourceForge/local.inc';		# database include file
+ $config{'lock_file'}		= '/tmp/sf-backend';		# lockfile location
+ $config{'log_file'}		= '/home/dummy/backend.log';	# logfile location
+ $config{'group_dir_prefix'} 	= '/home/groups';		# prefix for group directories
+diff -Naur SF2.0/db/SourceForge.sql SF2.0-p/db/SourceForge.sql
+--- SF2.0/db/SourceForge.sql	Thu Sep  7 23:39:37 2000
++++ SF2.0-p/db/SourceForge.sql	Tue Sep 19 20:49:25 2000
+@@ -526,7 +526,7 @@
+ 
+ CREATE TABLE frs_file (
+   file_id int(11) NOT NULL auto_increment,
+-  filename text,
++  filename char(255) NOT NULL,
+   release_id int(11) DEFAULT '0' NOT NULL,
+   type_id int(11) DEFAULT '0' NOT NULL,
+   processor_id int(11) DEFAULT '0' NOT NULL,
+diff -Naur SF2.0/docs/Install_Guide.html SF2.0-p/docs/Install_Guide.html
+--- SF2.0/docs/Install_Guide.html	Thu Sep  7 23:37:52 2000
++++ SF2.0-p/docs/Install_Guide.html	Tue Sep 19 20:55:26 2000
+@@ -166,7 +166,7 @@
+ 
+     b) You see an error message like this:
+ 
+-       Fatal error: Failed opening required '/etc/local.inc' in database.php on line 11
++       Fatal error: Failed opening required '/etc/SourceForge/local.inc' in database.php on line 11
+ 
+     In either cases it means that the pre.php file was found and that the include
+     path is correct. 
+@@ -174,22 +174,8 @@
+ -------------------------------------------------------------------------------
+ Configuring SourceForge
+ 
+-1) Create the /etc/local.inc file with the following:
+-
+-   &lt;?php
+-
+-   $sys_dbhost="your_db_host_name"; 
+-   $sys_dbname = "sourceforge";
+-   $sys_dbuser="user_name"; 
+-   $sys_dbpasswd="your_password"; 
+-   $sys_server="mysql"; 
+-
+-   //
+-   // With a trailing /
+-   //
+-   $sys_urlroot="/path/to/www/doc/root/"; 
+-   $sys_name="web1"; 
+-   ?&gt;
++1) Create the /etc/SourceForge/local.inc depending on supplied
++example file. All variable names should be self-explanatory.
+ 
+ 2) Look at the home page http://localhost/
+    It should display well.
+diff -Naur SF2.0/utils/include.pl SF2.0-p/utils/include.pl
+--- SF2.0/utils/include.pl	Thu Sep  7 23:37:52 2000
++++ SF2.0-p/utils/include.pl	Tue Sep 19 20:55:37 2000
+@@ -8,7 +8,7 @@
+ ##############################
+ # Global Variables
+ ##############################
+-$db_include	=	"/etc/local.inc";	# Local Include file for database username and password
++$db_include	=	"/etc/SourceForge/local.inc";	# Local Include file for database username and password
+ $tar_dir	=	"/tmp";			# Place to put deleted user's accounts
+ $uid_add	=	"20000";		# How much to add to the database uid to get the unix uid
+ $gid_add	=	"1000";			# How much to add to the database gid to get the unix uid
+diff -Naur SF2.0/www/include/pre.php SF2.0-p/www/include/pre.php
+--- SF2.0/www/include/pre.php	Thu Sep  7 23:37:53 2000
++++ SF2.0-p/www/include/pre.php	Tue Sep 19 20:55:48 2000
+@@ -12,7 +12,7 @@
+ 
+ // Defines all of the Source Forge hosts, databases, etc.
+ // This needs to be loaded first becuase the lines below depend upon it.
+-require ('/etc/local.inc');
++require ('/etc/SourceForge/local.inc');
+ 
+ if (($HTTP_HOST != $GLOBALS['sys_default_domain']) && ($HTTP_HOST != 'localhost')) {
+ 	if ($SERVER_PORT == '443') {
+diff -Naur SF2.0/www/include/squal_pre.php SF2.0-p/www/include/squal_pre.php
+--- SF2.0/www/include/squal_pre.php	Thu Sep  7 23:37:53 2000
++++ SF2.0-p/www/include/squal_pre.php	Tue Sep 19 20:56:01 2000
+@@ -6,7 +6,7 @@
+ //
+ // $Id$
+ 
+-require ('/etc/local.inc');
++require ('/etc/SourceForge/local.inc');
+ require('database.php');
+ require('session.php');
+ require('user.php');

@@ -1,0 +1,23 @@
+Step-by-step setup instructions for PLD
+----------------------------------------------------
+1. Create a new table:
+
+$ echo "CREATE DATABASE sourceforge;" | mysql -p -u mysql mysql
+
+2. Set up an mysql account
+
+$ echo "GRANT ALL PRIVILEGES ON sourceforge.* TO sourceforge@localhost IDENTIFIED BY 'mypass' WITH GRANT OPTION;" | mysql -p -u mysql mysql
+
+3. Add /home/httpd/SourceForge/db/SourceForge.sql to your database:
+
+$ mysql -p -u sourceforge sourceforge < /home/httpd/SourceForge/db/SourceForge.sql
+
+4. Set up DocumentRoot (for main server, or virtual host), in httpd.conf
+(or mod_vhost_alias.conf). DocumentRoot should point to
+/home/httpd/SourceForge/www. Remember about setting both unsecure and secure
+connections.
+
+5. Edit php.ini and add /home/httpd/SourceForge/www/include to
+include_path variable
+
+6. Edit /etc/SourceForge/local.inc to suit server configuration.
