@@ -6,6 +6,7 @@ Release:	2
 License:	GPL
 Group:		Development/Version Control
 Source0:	SF%{version}.tar.gz
+# Source0-md5:	5b6b68962e97f16ae4faf13ac9e40808
 Source1:	%{name}-README.PLD
 Source2:	%{name}-mod_vhost_alias.conf
 Source3:	%{name}.sql
