@@ -22,3 +22,16 @@ documentation directory.
 include_path variable
 
 6. Edit /etc/SourceForge/local.inc to suit server configuration.
+
+7. Log in, and add an 'admin' account via SSL
+
+8. Execute following SQL commands:
+
+$ mysql -p -u sourceforge sourceforge << EOF
+> update user set user_id=2 where user_name='admin';
+> insert into user_group (user_id, group_id, admin_flags) values (2, 1, 'A');
+> insert into bug_category values (100, 100, 'None');
+> insert into bug_group values (100, 100, 'None');
+> EOF
+
+9. Enjoy...
