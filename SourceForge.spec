@@ -5,8 +5,6 @@ Version:	2.0_cvs_20001116
 Release:	1
 License:	GPL
 Group:		Development/Version Control
-Group(de):	Entwicklung/Versionkontrolle
-Group(pl):	Programowanie/Zarz±dzanie wersjami
 Source0:	SF%{version}.tar.gz
 Source1:	%{name}-README.PLD
 Source2:	%{name}-mod_vhost_alias.conf
