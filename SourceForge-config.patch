@@ -1,18 +1,20 @@
-diff -Naur SF2.0/etc/local.inc SF2.0-p/etc/local.inc
---- SF2.0/etc/local.inc	Thu Sep  7 23:37:53 2000
-+++ SF2.0-p/etc/local.inc	Mon Sep 25 20:53:22 2000
-@@ -62,16 +62,16 @@
- 
- // Part II - Databases, html/php/other paths
- $sys_dbhost="localhost";
+diff -Naur SF2.0_cvs_20001116/etc/local.inc SF2.0_cvs_20001116-p/etc/local.inc
+--- SF2.0_cvs_20001116/etc/local.inc	Mon Oct 23 01:43:10 2000
++++ SF2.0_cvs_20001116-p/etc/local.inc	Thu Nov 16 19:42:14 2000
+@@ -69,8 +69,8 @@
+ $sys_db_use_replication=true;
+ //server to use for read-only stuff
+ $sys_dbreadhost='localhost';
 -$sys_dbname="alexandria";
 -$sys_dbuser="www";
--$sys_dbpasswd="";
 +$sys_dbname="sourceforge";
 +$sys_dbuser="sourceforge";
-+$sys_dbpasswd="mypass";
+ $sys_dbpasswd="";
  $sys_server="mysql";
-  
+ 
+@@ -92,10 +92,10 @@
+ $sys_ldap_admin_dn="cn=Manager,dc=company,dc=com";
+ 
  // Where files are placed when uploaded
 -$FTPINCOMING_DIR = "/nfs/remission/u7/ftp/incoming";
 +$FTPINCOMING_DIR = "/home/ftp/pub/Incoming";
@@ -23,7 +25,7 @@ diff -Naur SF2.0/etc/local.inc SF2.0-p/etc/local.inc
   
  // Where the SourceForge files are placed
  // *** IMPORTANT: sys_urlroot *MUST* be an ABSOLUTE FILEYSTEM PATH NAME
-@@ -79,11 +79,11 @@
+@@ -103,13 +103,13 @@
  //             installation.  If you use ANY form of relative path
  //             you will break the html_image function in include/html.php
  //
@@ -35,5 +37,8 @@ diff -Naur SF2.0/etc/local.inc SF2.0-p/etc/local.inc
 -$sf_cache_dir = "/sfcache";
 +$sf_cache_dir = "/home/httpd/SourceForge/cache";
  // Name of the system as a whole (needed by various utils and titles)
- $sys_name="prodigy";
+-$sys_name="prodigy";
++$sys_name="PLD SourceForge";
   
+  
+ // Part III - GUI modifications (menu colors, etc.)
