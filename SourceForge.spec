@@ -8,6 +8,8 @@ Group:
 Group(pl):	
 Source:		%{name}-%{version}.tar.gz
 Requires:	php
+Requires:	mysql
+Requires:	apache-mod_ssl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
