@@ -15,7 +15,6 @@ Patch1:		%{name}-config.patch
 Requires:	php >= 3.0
 Requires:	php-mysql
 Requires:	mysql-client
-Requires:	mysql >= 3.23
 Requires:	apache-mod_ssl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
