@@ -2,7 +2,7 @@ Summary:	Breaking Down the Barriers to Open Source Development
 Summary(pl):	Prze³amywanie barier tworzenia Wolnego Oprogramowania
 Name:		SourceForge
 Version:	2.0_cvs_20001116
-Release:	4
+Release:	5
 License:	GPL
 Group:		Development/Version Control
 Source0:	SF%{version}.tar.gz
@@ -12,10 +12,10 @@ Source2:	%{name}-mod_vhost_alias.conf
 Source3:	%{name}.sql
 Patch0:		%{name}-PLD.patch
 Patch1:		%{name}-config.patch
-Requires:	php >= 3.0
-Requires:	php-mysql
+Requires:	apache(mod_ssl)
 Requires:	mysql-client
-Requires:	apache-mod_ssl
+Requires:	php(mysql)
+Requires:	webserver(php) >= 3.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
