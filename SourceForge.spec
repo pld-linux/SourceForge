@@ -1,5 +1,5 @@
 Summary:	Breaking Down the Barriers to Open Source Development
-Summary(pl):	Prze³amywanie barier tworzenia Wolnego Oprogramowania
+Summary(pl.UTF-8):   PrzeÅ‚amywanie barier tworzenia Wolnego Oprogramowania
 Name:		SourceForge
 Version:	2.0_cvs_20001116
 Release:	5
@@ -24,11 +24,11 @@ access to the best in CVS, mailing lists, bug tracking, message
 boards/forums, task management, site hosting, permanent file archival,
 full backups, and total web-based administration.
 
-%description -l pl
-SourceForge jest darmow± us³ug± dla developerów oprogramowania z
-otwartymi ¼ród³ami, oferuj±c ³atwy dostêp do CVSa, list dyskusyjnych,
-systemów ¶ledzenia b³êdów, tablic og³oszeñ, zarz±dzania zadaniami,
-zarz±dzania stron± WWW, archiwizacji plików i ogólnej administracji
+%description -l pl.UTF-8
+SourceForge jest darmowÄ… usÅ‚ugÄ… dla developerÃ³w oprogramowania z
+otwartymi ÅºrÃ³dÅ‚ami, oferujÄ…c Å‚atwy dostÄ™p do CVSa, list dyskusyjnych,
+systemÃ³w Å›ledzenia bÅ‚Ä™dÃ³w, tablic ogÅ‚oszeÅ„, zarzÄ…dzania zadaniami,
+zarzÄ…dzania stronÄ… WWW, archiwizacji plikÃ³w i ogÃ³lnej administracji
 opartej na WWW.
 
 %prep
