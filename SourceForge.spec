@@ -1,5 +1,5 @@
 Summary:	Breaking Down the Barriers to Open Source Development
-Summary(pl.UTF-8):   Przełamywanie barier tworzenia Wolnego Oprogramowania
+Summary(pl.UTF-8):	Przełamywanie barier tworzenia Wolnego Oprogramowania
 Name:		SourceForge
 Version:	2.0_cvs_20001116
 Release:	5
